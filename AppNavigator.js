@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 
 import { createAppContainer } from 'react-navigation';
@@ -7,29 +7,11 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const Album = () => (
-  <View style={styles.container}>
-    <Text>Album</Text>
-  </View>
-);
-
-const Library = () => (
-  <View style={styles.container}>
-    <Text>Library</Text>
-  </View>
-);
-
-const Favorites = () => (
-  <View style={styles.container}>
-    <Text>Favorites</Text>
-  </View>
-);
-
-const Purchased = () => (
-  <View style={styles.container}>
-    <Text>Purchased</Text>
-  </View>
-);
+import Dashboard from './scr/Dashboard';
+import Lease from './scr/Lease';
+import Messages from './scr/Messages';
+import Profile from './scr/Profile';
+import Search from './scr/Search';
 
 const tabBarIcon = name => ({ tintColor }) => (
   <MaterialIcons
@@ -42,35 +24,66 @@ const tabBarIcon = name => ({ tintColor }) => (
 
 const BottomTabMaterial = createMaterialBottomTabNavigator(
   {
-    Album: {
-      screen: Album,
+    Dashboard: {
+      screen: Dashboard,
       navigationOptions: {
-        tabBarIcon: tabBarIcon('photo-album')
+        tabBarIcon: ({ focused }) => (
+          <Image style={{
+            width: 21,
+            height: 21,
+          }} source={focused ? require('./assets/images/bottom_tabbar/tabbar_dashboard_active.png') : require('./assets/images/bottom_tabbar/tabbar_dashboard.png')} />
+        ),
       }
     },
-    Library: {
-      screen: Library,
+    Search: {
+      screen: Search,
       navigationOptions: {
-        tabBarIcon: tabBarIcon('inbox')
+        tabBarIcon: ({ focused }) => (
+          <Image style={{
+            width: 21,
+            height: 21,
+          }} source={focused ? require('./assets/images/bottom_tabbar/tabbar_search_active.png') : require('./assets/images/bottom_tabbar/tabbar_search.png')} />
+        ),
       }
     },
-    Favorites: {
-      screen: Favorites,
+    Lease: {
+      screen: Lease,
       navigationOptions: {
-        tabBarIcon: tabBarIcon('favorite')
+        tabBarIcon: ({ focused }) => (
+          <Image style={{
+            width: 21,
+            height: 21,
+          }} source={focused ? require('./assets/images/bottom_tabbar/tabbar_lease_active.png') : require('./assets/images/bottom_tabbar/tabbar_lease.png')} />
+        ),
       }
     },
-    Purchased: {
-      screen: Purchased,
+    Messages: {
+      screen: Messages,
       navigationOptions: {
-        tabBarIcon: tabBarIcon('shop')
+        tabBarIcon: ({ focused }) => (
+          <Image style={{
+            width: 21,
+            height: 20,
+          }} source={focused ? require('./assets/images/bottom_tabbar/tabbar_messages_active.png') : require('./assets/images/bottom_tabbar/tabbar_messages.png')} />
+        ),
+      }
+    },
+    Profile: {
+      screen: Profile,
+      navigationOptions: {
+        tabBarIcon: ({ focused }) => (
+          <Image style={{
+            width: 21,
+            height: 21,
+          }} source={focused ? require('./assets/images/bottom_tabbar/tabbar_profile_active.png') : require('./assets/images/bottom_tabbar/tabbar_profile.png')} />
+        ),
       }
     },
   },
   {
     shifting: false,
-    activeColor: '#6200ee',
-    inactiveColor: '#828792',
+    activeColor: '#51C9A2',
+    inactiveColor: '#2D3236',
     barStyle: {
       backgroundColor: '#f8f7f9',
       borderTopWidth: StyleSheet.hairlineWidth,
